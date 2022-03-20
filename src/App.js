@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Aos from "aos";
+import SwiperCore, { Autoplay } from "swiper"
+import Header from "./components/Header/Header";
+import Hero from "./components/Hero/Hero";
+import About from "./components/About/About";
+import Services from "./components/Services/Services";
+import Reviews from "./components/Reviews/Reviews";
+import Footer from "./components/Footer/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
+  useEffect(() => {
+      Aos.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    })
+    
+  SwiperCore.use([Autoplay]);
+  }, []);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Hero />
+      <About />
+      <Services />
+      <Reviews />
+      <Footer />
+      <ScrollToTop />
+    </Router>
   );
 }
 
