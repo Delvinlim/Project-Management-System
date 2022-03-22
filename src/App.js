@@ -2,13 +2,10 @@ import { useEffect } from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Aos from "aos";
 import SwiperCore, { Autoplay } from "swiper"
-import Header from "./components/Header/Header";
-import Hero from "./components/Hero/Hero";
-import About from "./components/About/About";
-import Services from "./components/Services/Services";
-import Reviews from "./components/Reviews/Reviews";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import Home from "./pages/HomePage/Home";
+import DashboardHeader from "./components/Header/DashboardHeader";
 
 function App() {
   useEffect(() => {
@@ -24,11 +21,10 @@ function App() {
   
   return (
     <Router>
-      <Header />
-      <Hero />
-      <About />
-      <Services />
-      <Reviews />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/login" element={<DashboardHeader /> } />
+      </Routes>
       <Footer />
       <ScrollToTop />
     </Router>
