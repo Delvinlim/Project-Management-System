@@ -5,7 +5,7 @@ import SwiperCore, { Autoplay } from "swiper"
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/HomePage/Home";
-import DashboardHeader from "./components/Header/DashboardHeader";
+import Dashboard from "./pages/DashboardPage/Dashboard";
 
 function App() {
   useEffect(() => {
@@ -23,9 +23,9 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/login" element={<DashboardHeader /> } />
+        <Route exact path="/login" element={<Dashboard /> } />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
       <ScrollToTop />
     </Router>
   );

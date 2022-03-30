@@ -44,6 +44,20 @@ const Services = () => {
             </div>
           </div>
         </div>
+
+        {/* Input Services */}
+        {/* <div className="row align-items-center mt-3">
+          <div className="col-md-3">
+            <label for="inputReview" className="form-label">Any services that can build us better</label>
+          </div>
+          <div className="col-md-6">
+            <input type="text" id="inputReview" className="form-control" />
+          </div>
+          <div className="col-md-3">
+            <button type="submit" className="btn btn-get-started">Submit</button>
+          </div>
+        </div> */}
+
       </div>
     </section>
   )
