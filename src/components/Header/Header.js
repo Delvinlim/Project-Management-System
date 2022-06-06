@@ -41,7 +41,7 @@ const Header = () => {
             <li><LinkScroll to='about' offset={-40} activeClass='active' spy={true} className='nav-link' onClick={handleMobileNavClick}>About</LinkScroll></li>
             <li><LinkScroll to='services' offset={-40} activeClass='active' spy={true} className='nav-link' onClick={handleMobileNavClick}>Services</LinkScroll></li>
             <li><LinkScroll to='reviews' offset={-40} activeClass='active' spy={true} className='nav-link' onClick={handleMobileNavClick}>Reviews</LinkScroll></li>
-            <LinkRouter to="/login" className='primary'>Login</LinkRouter>
+            <LinkRouter to="/student/login" className='primary'>Login</LinkRouter>
           </ul>
           {/* <i className={`${isMobile ? "bi bi-list mobile-nav-toggle" : ""}`}></i> */}
           <i className={`bi bi-list mobile-nav-toggle ${mobileActive ? "bi-list bi-x" : ""}`} onClick={handleToggle}></i>

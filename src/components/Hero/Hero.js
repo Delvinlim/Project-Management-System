@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroImg from '../../assets/img/hero-img.svg';
 import { Link as LinkScroll } from "react-scroll";
+import { Link as LinkRouter } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -11,7 +12,8 @@ const Hero = () => {
             <div>
               <h1>Feeling hard to organize your group projects?</h1>
               <h2>No worries, we are here to help you maintain your group project task</h2>
-              <LinkScroll to='about' offset={-40} activeClass='active' spy={true} className='btn btn-get-started'>Get Started</LinkScroll>
+              <LinkRouter to="/student/register" className='btn btn-get-started'>Get Started</LinkRouter>
+              {/* <LinkScroll to='about' offset={-40} activeClass='active' spy={true} className='btn btn-get-started'>Get Started</LinkScroll> */}
               {/* <a href="#about" className="btn-get-started scrollto">Get Started</a> */}
             </div>
           </div>

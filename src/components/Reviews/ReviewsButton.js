@@ -1,11 +1,14 @@
 import axios from "axios";
 import FormData from "form-data"
-// import FormData from "form-data"
 import React, {useState} from 'react';
 import {Modal} from 'react-bootstrap';
 
 const ReviewsButton = () => {
   const [isToggle, setIsToggle] = useState(false);
+  const [name, setName] = useState('')
+  const [comment, setComment] = useState('')
+  const [image, setImage] = useState(null)
+  const [displayImage, setDisplayImage] = useState('')
   
   const showModal = () => {
     setIsToggle(true);
@@ -15,52 +18,34 @@ const ReviewsButton = () => {
     setIsToggle(false);
   };
 
-  const [name, setName] = useState('')
-  const [comment, setComment] = useState('')
-  const [image, setImage] = useState('')
-  
+  const handleImageUpload = (e) => {
+    console.log(e.target.files[0]);
+    let uploaded = e.target.files[0];
+    setDisplayImage(URL.createObjectURL(uploaded))
+    setImage(uploaded)
+  }
+
   const PostReviews = async(e) => {
     e.preventDefault();
     try {
       let bodyFormData = new FormData();
-      // bodyFormData.append('name', name)
-      // bodyFormData.append('comment', comment)
+      bodyFormData.append('name', name)
+      bodyFormData.append('comment', comment)
       bodyFormData.append('image', image)
-      console.log(bodyFormData.values())
-      console.log(image.replace('C:\\fakepath\\', ' '))
       
-      // await axios.post('http://localhost:5000/reviews', bodyFormData, {
-      //   headers: {
-      //     ...bodyFormData.getHeaders()
-      //   },
-      // });
-      // console.log("abc")
-      // .then((response) => {
-      //   console.log(response)
-      // })
-      // .catch((response) => {
-      //   console.log(response)
-      // })
-      // console.log(response)
-      await axios.post('http://localhost:5000/reviews', {
-        name: name,
-        comment: comment,
-        image: bodyFormData
-      }, {
-        headers: {
-          ...bodyFormData.getHeaders()
-        }
-      })
-      alert("successfully added a post reviews")
+      await axios.post('http://localhost:5000/api/reviews', bodyFormData)
+        .then((response) => console.log(response.data))
+      // TODO add an alert to notified review successfully added
+      setIsToggle(false)
     } catch (error) {
+      console.log(error)
       if(error.response) {
+        console.log('helo')
         console.log(error.response.data)
       }
     }
   }
-
-  // NOTE => providing image give error. get rid of the image api is ok
-
+  
   return (
     <>
       <div className="d-gap mt-3 mx-auto w-75">
@@ -80,11 +65,10 @@ const ReviewsButton = () => {
                 <textarea className="form-control" name="comment" id="comment" rows="3" value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
                 {/* <input type="text" className="form-control" name="comment" id="comment" /> */}
               </div>
-
               <label htmlFor="image" className='mb-2'>Profile Image</label>
               <div className="form-group">
-                <input type="file" className="form-control-file" name="image" id="image" value={image} onChange={(e) => setImage(e.target.value)} />
-              </div>            
+                <input type="file" className="form-control-file" accept="image/*" name="image" id="image" onChange={handleImageUpload} />
+              </div>
             </Modal.Body>
             <Modal.Footer>
               <button onClick={hideModal} className='btn'>Cancel</button>

@@ -7,6 +7,10 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -170,6 +174,83 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Override some default Bootstrap stylings
+--------------------------------------------------------------*/
+/* Dropdown menus */
+.dropdown-menu {
+  border-radius: 4px;
+  padding: 10px 0;
+  -webkit-animation-name: dropdown-animate;
+  animation-name: dropdown-animate;
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  border: 0;
+  box-shadow: 0 5px 30px 0 rgba(82, 63, 105, 0.2);
+  width: 250px;
+}
+.dropdown-menu .dropdown-dashboard-header {
+  text-align: center;
+  font-size: 15px;
+  padding: 10px 25px;
+}
+.dropdown-menu .dropdown-divider {
+  color: #a5c5fe;
+  margin: 0;
+}
+.dropdown-menu .dropdown-item {
+  font-size: 14px;
+  padding: 15px 20px;
+  transition: 0.3s;
+}
+.dropdown-menu .dropdown-item i {
+  margin-right: 10px;
+  font-size: 18px;
+  line-height: 0;
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: #f6f9ff;
+}
+
+@media (min-width: 768px) {
+  .dropdown-menu-arrow::before {
+    content: "";
+    width: 13px;
+    height: 13px;
+    background: #fff;
+    position: absolute;
+    top: -7px;
+    right: 20px;
+    transform: rotate(45deg);
+    border-top: 1px solid #eaedf1;
+    border-left: 1px solid #eaedf1;
+  }
+}
+@-webkit-keyframes dropdown-animate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 0;
+  }
+}
+@keyframes dropdown-animate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 0;
+  }
+}
+
+/*--------------------------------------------------------------
 # Dashboard Header Navigation
 --------------------------------------------------------------*/
 .dashboard-header-nav ul {
@@ -193,85 +274,30 @@ section {
   font-size: 14px;
   font-weight: 600;
 }
-.dashboard-header-nav .badge-number {
-  position: absolute;
-  inset: 4px 6px auto auto;
-  font-weight: normal;
-  font-size: 11px;
-  padding: 3px 6px;
-}
-.dashboard-header-nav .notifications .notification-item {
-  display: flex;
-  align-items: center;
-  padding: 15px 10px;
-  transition: 0.3s;
-}
-.dashboard-header-nav .notifications .notification-item i {
-  margin: 0 20px 0 10px;
-  font-size: 24px;
-}
-.dashboard-header-nav .notifications .notification-item h4 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-.dashboard-header-nav .notifications .notification-item p {
-  font-size: 13px;
-  margin-bottom: 3px;
-  color: #919191;
-}
-.dashboard-header-nav .notifications .notification-item:hover {
-  background-color: #f6f9ff;
-}
-.dashboard-header-nav .messages .message-item {
-  padding: 15px 10px;
-  transition: 0.3s;
-}
-.dashboard-header-nav .messages .message-item a {
-  display: flex;
-}
-.dashboard-header-nav .messages .message-item img {
-  margin: 0 20px 0 10px;
-  max-height: 40px;
-}
-.dashboard-header-nav .messages .message-item h4 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #444444;
-}
-.dashboard-header-nav .messages .message-item p {
-  font-size: 13px;
-  margin-bottom: 3px;
-  color: #919191;
-}
-.dashboard-header-nav .messages .message-item:hover {
-  background-color: #f6f9ff;
-}
-.dashboard-header-nav .profile {
+.dashboard-header-nav .nav-profile {
   min-width: 240px;
   padding-bottom: 0;
 }
-.dashboard-header-nav .profile .dropdown-dashboard-header h6 {
+.dashboard-header-nav .dropdown-dashboard-header h6 {
   font-size: 18px;
   margin-bottom: 0;
   font-weight: 600;
   color: #444444;
 }
-.dashboard-header-nav .profile .dropdown-dashboard-header span {
+.dashboard-header-nav .dropdown-dashboard-header span {
   font-size: 14px;
 }
-.dashboard-header-nav .profile .dropdown-item {
+.dashboard-header-nav .dropdown-item {
   font-size: 14px;
   padding: 10px 15px;
   transition: 0.3s;
 }
-.dashboard-header-nav .profile .dropdown-item i {
+.dashboard-header-nav .dropdown-item i {
   margin-right: 10px;
   font-size: 18px;
   line-height: 0;
 }
-.dashboard-header-nav .profile .dropdown-item:hover {
+.dashboard-header-nav .dropdown-item:hover {
   background-color: #f6f9ff;
 }
 
@@ -731,6 +757,9 @@ section {
   padding-top: 30px;
 }
 
+/*--------------------------------------------------------------
+# No Projects
+--------------------------------------------------------------*/
 .card{
   border:2px solid #ff5e5e;
   border-radius: 10px;
@@ -780,7 +809,7 @@ section {
   margin-top: 20px;
   font-size: 20px;
 }
-.btn:hover{
+.btn-create-project:hover{
   background-color: #f14c4c;
   color: #fff;
 }
